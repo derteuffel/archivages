@@ -1,0 +1,16 @@
+package com.derteuffel.archives.enums;
+
+public enum ENatureDocument {
+
+
+    RAPPORT_D_ACTIVITES,
+    RAPPORT_FINANCIER,
+    RAPPORT_COMPTABLE,
+    LETTRE_ADMINISTRATIVE,
+    FACTURE_D_ACHAT,
+    FACTURE_VENTE,
+    RECU_ACHAT,
+    RECU_VENTE,
+    CONTRAT_DE_BAIL,
+    CONTRAT_DE_PERSONNEL
+}
