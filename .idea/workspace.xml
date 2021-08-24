@@ -2,135 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0785ea71-09ff-4bd0-972d-f8c20ec23e45" name="Default Changelist" comment="adding user manae in">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/arashmil.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/bg-404.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/bg-abstract.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/bg-abstract2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/blogpost.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/chadengle.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example1-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example1.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example10-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example10.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example11-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example11.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example12-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example12.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example2-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example2.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example3-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example3.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example4-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example4.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example5-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example5.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example6-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example6.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example7-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example7.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example8-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example8.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example9-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/example9.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/logoinvoice.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/product1.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/product10.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/product11.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/product12.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/product2.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/product3.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/product4.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/product5.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/product6.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/product7.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/examples/product8.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/jm_denis.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/logo.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/logo.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/logoalternatif.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/logoproduct.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/logoproduct2.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/logoproduct3.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/mlane.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/productimg/product1.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/productimg/product2.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/productimg/product3.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/productimg/product4.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/productimg/product5.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/productimg/product6.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/productimg/product7.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/productimg/product8.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/productimg/product9.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/profile.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/profile2.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/sauro.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/talha.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/img/visa.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/arashmil.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/bg-404.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/bg-abstract.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/bg-abstract2.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/blogpost.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/chadengle.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example1-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example1.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example10-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example10.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example11-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example11.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example12-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example12.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example2-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example2.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example3-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example3.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example4-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example4.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example5-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example5.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example6-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example6.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example7-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example7.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example8-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example8.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example9-300x300.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/example9.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/logoinvoice.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/product1.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/product10.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/product11.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/product12.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/product2.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/product3.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/product4.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/product5.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/product6.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/product7.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/examples/product8.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/jm_denis.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/logo.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/logo.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/logoalternatif.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/logoproduct.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/logoproduct2.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/logoproduct3.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/mlane.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/productimg/product1.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/productimg/product2.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/productimg/product3.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/productimg/product4.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/productimg/product5.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/productimg/product6.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/productimg/product7.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/productimg/product8.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/productimg/product9.jpeg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/profile.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/profile2.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/sauro.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/talha.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/img/visa.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -141,7 +13,21 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="0">
+                <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -400,10 +286,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55615000" />
+    <option name="totallyTimeSpent" value="56040000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="20" y="74" width="1260" height="676" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -417,7 +304,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297491" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3297491" sideWeight="0.49671593" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3297491" sideWeight="0.49671593" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2865353" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -726,17 +613,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="45">
-            <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/derteuffel/archives/controllers/SecteurController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-336">
@@ -817,6 +693,17 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/img/flags/cd.png">
       <provider selected="true" editor-type-id="images">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
       </provider>
     </entry>
   </component>
