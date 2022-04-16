@@ -1,15 +1,12 @@
 package com.derteuffel.archives.controllers;
 
-import com.derteuffel.archives.entities.Archive;
-import com.derteuffel.archives.entities.Compte;
-import com.derteuffel.archives.entities.Role;
+import com.derteuffel.archives.entities.*;
+import com.derteuffel.archives.enums.EStatus;
 import com.derteuffel.archives.helpers.CountryDetails;
-import com.derteuffel.archives.repositories.ArchiveRepository;
-import com.derteuffel.archives.repositories.CompteRepository;
-import com.derteuffel.archives.repositories.RoleRepository;
-import com.derteuffel.archives.repositories.UserRepository;
+import com.derteuffel.archives.repositories.*;
 import com.derteuffel.archives.services.CompteService;
 import com.derteuffel.archives.services.Multipart;
+import com.derteuffel.archives.services.TraitementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -28,6 +25,12 @@ import java.util.*;
 public class ArchiveController {
     @Autowired
     private CompteService compteService;
+
+    @Autowired
+    private TraitementService traitementService;
+
+    @Autowired
+    private StatusRepository statusRepository;
     @Autowired
     private CompteRepository compteRepository;
     @Autowired
@@ -50,6 +53,7 @@ public class ArchiveController {
         model.addAttribute("lists",lists);
         model.addAttribute("compte",compte);
         model.addAttribute("archive",new Archive());
+        model.addAttribute("departements",countryDetails.getDivisions());
         if (compte.getRoles().contains(role)){
             return "redirect:/archive/lists";
         }
@@ -116,6 +120,25 @@ public class ArchiveController {
         archive.setDateEnregistrement(sdf.format(date));
         archive.setCompte(compte);
         archiveRepository.save(archive);
+        Traitement traitement = new Traitement();
+        traitement.setTitle("Reception du courrier");
+        traitement.setTask("Transmision du courrier "+archive.getCode()+" Vers la direction");
+        traitement.setCompte(compte);
+        traitement.setArchive(archive);
+        traitementService.save(traitement);
+        Status status = new Status();
+            status.setStatus(EStatus.ATTENTE);
+            if (archive.getPieces().size()>0) {
+                status.setFileUrl(archive.getPieces().get(0));
+            }else {
+                status.setFileUrl(null);
+            }
+
+            status.setObservation("Entrer du courrier dans le service");
+            status.setTraitement(traitement);
+            status.setValidate(true);
+            statusRepository.save(status);
+
         redirectAttributes.addFlashAttribute("success","Operation reussie");
         return "redirect:/archive/home";
     }
@@ -127,8 +150,65 @@ public class ArchiveController {
         Archive archive = archiveRepository.getOne(id);
         model.addAttribute("compte",compte);
         model.addAttribute("archive",archive);
+        model.addAttribute("traitements",traitementService.findAllByArchive(archive.getId()));
+        System.out.println(traitementService.findAllByArchive(archive.getId()));
+        System.out.println(archive.getTraitements());
+        //model.addAttribute("traitements",archive.getTraitements());
+        model.addAttribute("traitement",new Traitement());
+        model.addAttribute("status",new Status());
+        if (archive.getCompte() != null){
+            if (archive.getCompte().getDirection() != null){
+                List<Compte> comptes = compteService.findAllByDIrection(archive.getCompte().getDirection().getId());
+                model.addAttribute("comptes",comptes);
+            }else {
+                model.addAttribute("comptes",new ArrayList<>());
+            }
+        }
         return "archive/detail";
     }
+
+    @PostMapping("/traitement/transfert/{id}")
+    public String addTraitement(Traitement traitement, @PathVariable Long id,HttpServletRequest request){
+
+        Principal principal = request.getUserPrincipal();
+        Compte compte = compteService.findByUsernameOrEmail(principal.getName(), principal.getName());
+        Archive archive = archiveRepository.getOne(id);
+        traitement.setCompte(compte);
+        traitement.setArchive(archive);
+        Traitement savedTraitement = traitementService.save(traitement);
+        System.out.println("Je contient: "+savedTraitement.getId());
+        Status status = new Status();
+        if (archive.getTraitements().size() >0){
+            status.setStatus(EStatus.TRAITEMENT);
+        }
+
+        if (archive.getPieces().size()>0) {
+            status.setFileUrl(archive.getPieces().get(0));
+        }else {
+            status.setFileUrl(null);
+        }
+
+        status.setObservation("Entrer du courrier dans le service");
+        status.setTraitement(savedTraitement);
+        status.setValidate(true);
+        statusRepository.save(status);
+        return "redirect:/archive/detail/"+archive.getId();
+    }
+
+    @PostMapping("/status/save/{id}")
+    public String saveStatus(Status status, @PathVariable Long id, @RequestParam("file") MultipartFile file){
+        Traitement traitement = traitementService.findOne(id);
+       status.setTraitement(traitement);
+        if (!file.isEmpty()){
+            multipart.store(file);
+        }
+        status.setFileUrl("/downloadFile/"+file.getOriginalFilename());
+        status.setValidate(true);
+        status.setStatus(EStatus.TERMINER);
+        statusRepository.save(status);
+        return "redirect:/archive/detail/"+traitement.getArchive().getId();
+    }
+
 
     @GetMapping("/update/{id}")
     public String archiveUpdate(@PathVariable Long id, Model model, HttpServletRequest request){

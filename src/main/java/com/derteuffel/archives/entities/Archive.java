@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Data
+
 @Entity
 @Table(name = "archive")
 public class Archive implements Serializable {
@@ -37,12 +37,13 @@ public class Archive implements Serializable {
     private String dateEnregistrement;
 
     @ManyToOne
-    @JsonIgnoreProperties("archives")
     private Compte compte;
 
     @ManyToOne
-    @JsonIgnoreProperties("archives")
     private Secteur secteur;
+
+    @OneToMany(mappedBy = "archive")
+    private List<Traitement> traitements;
 
     public Long getId() {
         return id;
@@ -170,5 +171,13 @@ public class Archive implements Serializable {
 
     public void setSecteur(Secteur secteur) {
         this.secteur = secteur;
+    }
+
+    public List<Traitement> getTraitements() {
+        return traitements;
+    }
+
+    public void setTraitements(List<Traitement> traitements) {
+        this.traitements = traitements;
     }
 }

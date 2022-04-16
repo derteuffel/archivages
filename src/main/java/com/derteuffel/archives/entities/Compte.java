@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-@Data
+
 @Entity
 @Table(name = "compte")
 public class Compte implements Serializable {

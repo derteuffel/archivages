@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Data
+
 @Entity
 @Table(name = "secteur")
 public class Secteur implements Serializable {

@@ -1,0 +1,145 @@
+<!-- Sidebar -->
+<div th:fragment="sidebar" th:each=" role : ${compte.roles}"  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" class="sidebar sidebar-style-2">
+    <div class="sidebar-wrapper scrollbar scrollbar-inner">
+        <div class="sidebar-content">
+            <div class="user" >
+                <div class="avatar-sm float-left mr-2">
+                    <img  th:src="@{/images/default.jpeg}" alt="..." class="avatar-img rounded-circle">
+                </div>
+                <div class="info">
+                    <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+								<span>
+									<span th:text="${compte.username}"></span>
+									<span class="user-level" th:text="${compte.user.fonction}">Administrator</span>
+									<span class="caret"></span>
+								</span>
+                    </a>
+                    <div class="clearfix"></div>
+
+                    <div class="collapse in" id="collapseExample">
+                        <ul class="nav">
+                            <li>
+                                <a th:href="@{/archive/user/detail/}+${compte.user.id}">
+                                    <span class="link-collapse">Mon Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a th:href="@{/archive/user/update/}+${compte.user.id}">
+                                    <span class="link-collapse">Editer Profile</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#settings">
+                                    <span class="link-collapse">Parametres</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav nav-primary">
+                <li class="nav-item active">
+                    <a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
+                        <i class="fas fa-archive"></i>
+                        <p>Tableau de Bord</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="dashboard">
+                        <ul class="nav nav-collapse">
+                            <li th:if="${role.name}=='ROLE_ROOT' or ${role.name}=='ROLE_GERANT' or ${role.name}=='ROLE_DG'">
+                                <a th:href="@{/archive/home}">
+                                    <span class="sub-item">Toutes les Archives</span>
+                                </a>
+                            </li>
+                            <li >
+                                <a th:href="@{/archive/lists}">
+                                    <span class="sub-item">Mes archives enregistrees</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-section" sec:authorize=”isAuthenticated()”>
+							<span class="sidebar-mini-icon">
+								<i class="fa fa-ellipsis-h"></i>
+							</span>
+                    <h4 class="text-section">Gestions</h4>
+                </li>
+                <li class="nav-item" th:if="${role.name}=='ROLE_ROOT' or ${role.name}=='ROLE_GERANT' or ${role.name}=='ROLE_DG' or ${role.name}=='ROLE_DT' or ${role.name}=='ROLE_CAISSE' or ${role.name}=='ROLE_INFO'">
+                    <a data-toggle="collapse" href="#base">
+                        <i class="fas fa-search"></i>
+                        <p>Recherche avancee</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="base">
+                        <ul class="nav nav-collapse">
+                                <li>
+                                    <a href="#log" data-toggle="collapse" >
+                                        <p>Par nature de document</p>
+                                        <span class="caret"></span>
+                                    </a>
+                                    <div class="collapse" id="log">
+                                        <ul class="nav nav-collapse" th:each="name : ${T(com.derteuffel.archives.enums.ENatureDocument).values()}">
+                                            <li>
+                                                <a th:href="@{/archive/lists/nature/}+${name}">
+                                                    <span class="sub-item" th:text="${name}"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            <li>
+                                <a href="#log1" data-toggle="collapse" >
+                                    <p>Par duree d'age</p>
+                                    <span class="caret"></span>
+                                </a>
+                                <div class="collapse" id="log1">
+                                    <ul class="nav nav-collapse" th:each="name : ${T(com.derteuffel.archives.enums.EAgeDocument).values()}">
+                                        <li>
+                                            <a th:href="@{/archive/lists/age/}+${name}">
+                                                <span class="sub-item" th:text="${name}"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item" th:if="${role.name}=='ROLE_ROOT' or ${role.name}=='ROLE_GERANT' or ${role.name}=='ROLE_DG'or ${role.name}=='ROLE_DRH'" >
+                    <a data-toggle="collapse" href="#sidebarLayouts">
+                        <i class="fas fa-users"></i>
+                        <p>Ressources humaines</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="sidebarLayouts" >
+                        <ul class="nav nav-collapse" >
+                            <li >
+                                <a th:href="@{/archive/user/lists}">
+                                    <span class="sub-item">Tous le personnel</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item" th:if="${role.name}=='ROLE_ROOT' or  ${role.name}=='ROLE_DG'or ${role.name}=='ROLE_DRH'" >
+                    <a data-toggle="collapse" href="#sidebarLayouts1">
+                        <i class="fas fa-archway"></i>
+                        <p>Representations</p>
+                        <span class="caret"></span>
+                    </a>
+                    <div class="collapse" id="sidebarLayouts1" >
+                        <ul class="nav nav-collapse" >
+                            <li >
+                                <a th:href="@{/direction/lists}">
+                                    <span class="sub-item">Toutes les directions</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End Sidebar -->

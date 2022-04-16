@@ -25,6 +25,7 @@
     <!-- CSS Files -->
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/css/atlantis.min.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css">
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" th:href="@{/css/demo.css}">
@@ -41,6 +42,7 @@
         #sticky-footer {
             flex-shrink: none;
         }
+
     </style>
 </head>
 <body>
@@ -224,14 +226,383 @@
                             </div>
                             <hr>
                             <div class="row my--2" th:if="${role.name} == 'ROLE_ROOT' or ${role.name} == 'ROLE_DRH'">
-                                <div class="col-md-4">
+                                <div class="col-md-6 col-lg-4">
                                     <a th:href="@{/archive/home}" class="btn btn-outline-warning rounded" ><i class="fa fa-long-arrow-left"></i>&nbsp;&nbsp;Retour </a>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6 col-lg-4">
                                     <a th:href="@{/archive/delete/}+${archive.id}" class="btn btn-outline-danger rounded" ><i class="fa fa-trash"></i>&nbsp;&nbsp;Supprimer </a>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6 col-lg-4">
                                     <a th:href="@{/archive/update/}+${archive.id}" class="btn btn-outline-primary rounded" ><i class="fa fa-edit"></i>&nbsp;&nbsp;Modifier </a>
+                                </div>
+
+                            </div>
+                            <hr>
+                            <div class=" my--2" >
+                                <div class="card-header">
+                                    <div class="card-title text-center">
+                                        Traitement du courrier <br>
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="bs-stepper">
+                                        <div class="bs-stepper-header" role="tablist">
+                                            <!-- your steps here -->
+                                            <div class="step" data-target="#reception-part">
+                                                <button type="button" class="step-trigger" role="tab" aria-controls="reception-part" id="reception-part-trigger">
+                                                    <span class="bs-stepper-circle">1</span>
+                                                    <span class="bs-stepper-label">Reception</span>
+                                                </button>
+                                                <div class="bs-stepper-content">
+                                                    <!-- your steps content here -->
+                                                    <div id="reception-part" class="content" style="display:block" role="tabpanel" aria-labelledby="reception-part-trigger">
+                                                        <ul>
+                                                            <li>
+                                                                <span th:text="${'Titre: '+traitements[0]?.title}"></span><br>
+                                                                <span th:text="${'Tache effectuer: '+traitements[0]?.task}"></span><br>
+                                                                <span th:text="${'A la reception: '+traitements[0]?.compte.username}"></span><br>
+                                                                <span th:text="${'Date reception: '+traitements[0]?.date}"></span>
+                                                                <span th:text="${#lists.size(traitements[0]?.statusList)}"></span>
+                                                                <hr>
+                                                                <tr th:if="${#lists.size(traitements[0]?.statusList)}>0" th:each="status : ${traitements[0]?.statusList}">
+                                                                    <span th:text="${status.date}"></span><br>
+                                                                    <span th:text="${status.status}"></span><br>
+                                                                    <span th:if="${status.validate}" class="text-success">Terminer</span><br>
+                                                                    <span th:if="${!status.validate}" class="text-warning">Inachever</span><br>
+                                                                </tr>
+                                                                <tr th:if="${#lists.size(traitements)}<2" >
+                                                                    <a  class="btn btn-outline-success rounded" th:if="${#lists.size(traitements)}<2"  data-toggle="modal" data-target="#addTranfertModal" ><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;Transferer Courrier </a>
+                                                                    <div class="modal fade" id="addTranfertModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                        <div class="modal-dialog" role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header no-bd">
+                                                                                    <h5 class="modal-title">
+                                                                            <span class="fw-mediumbold">
+                                                                                    Formulaire d'une
+                                                                            </span>
+                                                                                        <span class="fw-light">
+															                        transmission de courrier
+                                                                            </span>
+                                                                                    </h5>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <form th:action="@{/archive/traitement/transfert/}+${archive.id}" method="post" th:object="${traitement}" >
+                                                                                    <div class="modal-body">
+                                                                                        <p class="small">Bien vouloir transferer le courrier</p>
+                                                                                        <div class="row">
+                                                                                            <div class="col-sm-12">
+                                                                                                <div class="form-group form-group-default">
+                                                                                                    <label>Titre :</label>
+                                                                                                    <input id="title" type="text" th:field="*{title}" class="form-control" placeholder="Titre">
+                                                                                                </div>
+                                                                                                <div class="form-group form-group-default">
+                                                                                                    <label>Tache :</label>
+                                                                                                    <input id="tasks" type="text" th:field="*{task}" class="form-control" placeholder="Tache">
+                                                                                                </div>
+                                                                                                <div class="form-group form-group-default">
+                                                                                                    <label>Destinataire :</label>
+                                                                                                    <select th:field="*{compte}" class="form-control">
+                                                                                                        <option th:each="name : ${comptes}" th:text="${name.username}" th:value="${name}"></option>
+                                                                                                    </select>
+                                                                                                </div>
+
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="modal-footer no-bd">
+                                                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                                                                                        <button type="submit"  class="btn btn-primary">Enregistrer</button>
+                                                                                    </div>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </tr>
+                                                                <tr th:if="${#lists.size(traitements[0]?.statusList)}>1" >
+                                                                    <a  class="btn btn-outline-success rounded"  data-toggle="modal" data-target="#addStatusModal" ><i class="fa fa-check"></i>&nbsp;&nbsp;Terminer traitement(Courrier de sorti) </a>
+                                                                    <div class="modal fade" id="addStatusModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                        <div class="modal-dialog" role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header no-bd">
+                                                                                    <h5 class="modal-title">
+                                                                            <span class="fw-mediumbold">
+                                                                                    Formulaire d'une
+                                                                            </span>
+                                                                                        <span class="fw-light">
+															                        Action
+                                                                            </span>
+                                                                                    </h5>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <form th:action="@{/archive/status/save/}+${traitements[0]?.id}" method="post" th:object="${status}" enctype="multipart/form-data">
+                                                                                    <div class="modal-body">
+                                                                                        <p class="small">Bien vouloir renseigner les champs ci-dessous pour ajouter une nouvelle action</p>
+                                                                                        <div class="row">
+                                                                                            <div class="col-sm-12">
+
+                                                                                                <div class="form-group form-group-default">
+                                                                                                    <label>Nature du document :</label>
+                                                                                                    <select th:field="*{status}" class="form-control">
+                                                                                                        <option th:each="name : ${T(com.derteuffel.archives.enums.EStatus).values()}" th:text="${name}" th:value="${name}"></option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                                <div class="form-group form-group-default">
+                                                                                                    <label>Observations :</label>
+                                                                                                    <textarea th:field="*{observation}" rows="3" class="form-control" placeholder="Observation"></textarea>
+                                                                                                </div>
+                                                                                                <div class="form-group form-group-default">
+                                                                                                    <label>Document :</label>
+                                                                                                    <input  type="file" name="file" class="form-control-file" >
+                                                                                                </div>
+
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="modal-footer no-bd">
+                                                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                                                                                        <button type="submit"  class="btn btn-primary">Enregistrer</button>
+                                                                                    </div>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </tr>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="step" data-target="#direction-part">
+                                                <button type="button" class="step-trigger" role="tab" aria-controls="direction-part" id="direction-part-trigger">
+                                                    <span class="bs-stepper-circle">2</span>
+                                                    <span class="bs-stepper-label">Direction</span>
+                                                </button>
+                                                <div class="bs-stepper-content">
+                                                    <!-- your steps content here -->
+                                                    <div id="direction-part" class="content" style="display:block" role="tabpanel" aria-labelledby="direction-part-trigger">
+                                                        <ul th:if="${#lists.size(traitements)} > 1">
+                                                            <li>
+                                                                <span th:text="${'Titre: '+traitements[1]?.title}"></span><br>
+                                                                <span th:text="${'Tache: '+traitements[1]?.task}"></span><br>
+                                                                <span th:text="${'Recu par: '+traitements[1]?.compte.username}"></span>
+                                                                <span th:text="${'Date: '+traitements[1]?.date}"></span>
+                                                                <span th:text="${#lists.size(traitements[1]?.statusList)}"></span>
+                                                                <hr>
+                                                                <tr th:if="${#lists.size(traitements[1]?.statusList)}>0" th:each="status : ${traitements[1]?.statusList}">
+
+                                                                    <span th:text="${status.date}"></span><br>
+                                                                    <span th:text="${status.status}"></span><br>
+                                                                    <span th:if="${status.validate}" class="text-success">Terminer</span><br>
+                                                                    <span th:if="${!status.validate}" class="text-warning">Inachever</span><br>
+                                                                </tr>
+                                                                <tr th:if="${#lists.size(traitements)}<3" >
+                                                                    <a  class="btn btn-outline-success rounded" th:if="${#lists.size(traitements)}<3" data-toggle="modal" data-target="#addTranfertModal1" ><i class="fa fa-chevron-right"></i>&nbsp;&nbsp;Transferer Courrier </a>
+                                                                    <div class="modal fade" id="addTranfertModal1" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                        <div class="modal-dialog" role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header no-bd">
+                                                                                    <h5 class="modal-title">
+                                                                            <span class="fw-mediumbold">
+                                                                                    Formulaire d'une
+                                                                            </span>
+                                                                                        <span class="fw-light">
+															                        transmission de courrier
+                                                                            </span>
+                                                                                    </h5>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <form th:action="@{/archive/traitement/transfert/}+${archive.id}" method="post" th:object="${traitement}" >
+                                                                                    <div class="modal-body">
+                                                                                        <p class="small">Bien vouloir choisir le destinataire</p>
+                                                                                        <div class="row">
+                                                                                            <div class="col-sm-12">
+                                                                                                <div class="form-group form-group-default">
+                                                                                                    <label>Titre :</label>
+                                                                                                    <input  type="text" th:field="*{title}" class="form-control" placeholder="Titre">
+                                                                                                </div>
+                                                                                                <div class="form-group form-group-default">
+                                                                                                    <label>Tache :</label>
+                                                                                                    <input  type="text" th:field="*{task}" class="form-control" placeholder="Tache">
+                                                                                                </div>
+                                                                                                <div class="form-group form-group-default">
+                                                                                                    <label>Destination :</label>
+                                                                                                    <select th:field="*{compte}" class="form-control">
+                                                                                                        <option th:each="name : ${comptes}" th:text="${name.username}" th:value="${name}"></option>
+                                                                                                    </select>
+                                                                                                </div>
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="modal-footer no-bd">
+                                                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                                                                                        <button type="submit"  class="btn btn-primary">Enregistrer</button>
+                                                                                    </div>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </tr>
+                                                                <tr th:if="${#lists.size(traitements[1]?.statusList)} >= 1 and ${#lists.size(traitements[1]?.statusList)} < 2" >
+                                                                    <a  class="btn btn-outline-success rounded"  data-toggle="modal" data-target="#addStatusModal1" ><i class="fa fa-chevron-left"></i>&nbsp;&nbsp;Terminer le traitement </a>
+                                                                    <div class="modal fade" id="addStatusModal1" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                        <div class="modal-dialog" role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header no-bd">
+                                                                                    <h5 class="modal-title">
+                                                                            <span class="fw-mediumbold">
+                                                                                    Formulaire d'une
+                                                                            </span>
+                                                                                        <span class="fw-light">
+															                        Action
+                                                                            </span>
+                                                                                    </h5>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <form th:action="@{/archive/status/save/}+${traitements[1]?.id}" method="post" th:object="${status}" enctype="multipart/form-data">
+                                                                                    <div class="modal-body">
+                                                                                        <p class="small">Bien vouloir renseigner les champs ci-dessous pour ajouter une nouvelle action</p>
+                                                                                        <div class="row">
+                                                                                            <div class="col-sm-12">
+
+                                                                                                <div class="form-group form-group-default">
+                                                                                                    <label>Nature du document :</label>
+                                                                                                    <select th:field="*{status}" class="form-control">
+                                                                                                        <option th:each="name : ${T(com.derteuffel.archives.enums.EStatus).values()}" th:text="${name}" th:value="${name}"></option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                                <div class="form-group form-group-default">
+                                                                                                    <label>Observations :</label>
+                                                                                                    <textarea th:field="*{observation}" rows="3" class="form-control" placeholder="Observation"></textarea>
+                                                                                                </div>
+                                                                                                <div class="form-group form-group-default">
+                                                                                                    <label>Document :</label>
+                                                                                                    <input  type="file" name="file" class="form-control-file" >
+                                                                                                </div>
+
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="modal-footer no-bd">
+                                                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                                                                                        <button type="submit"  class="btn btn-primary">Enregistrer</button>
+                                                                                    </div>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </tr>
+                                                            </li>
+                                                        </ul>
+                                                        <ul th:if="${#lists.size(traitements)} <= 1">
+                                                            <li>
+                                                                <span th:text="${'Aucun element recu'}"></span>
+                                                            </li>
+                                                        </ul>
+                                                        <br>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="step" data-target="#service-part">
+                                                <button type="button" class="step-trigger" role="tab" aria-controls="service-part" id="service-part-trigger">
+                                                    <span class="bs-stepper-circle">3</span>
+                                                    <span class="bs-stepper-label">Services</span>
+                                                </button>
+                                                <div class="bs-stepper-content">
+                                                    <!-- your steps content here -->
+                                                      <div id="service-part" class="content" style="display:block" role="tabpanel" aria-labelledby="service-part-trigger">
+                                                          <ul th:if="${#lists.size(traitements)} > 2">
+                                                              <li>
+                                                                  <span th:text="${'Titre: '+traitements[2]?.title}"></span><br>
+                                                                  <span th:text="${'Tache: '+traitements[2]?.task}"></span><br>
+                                                                  <span th:text="${'Recu par: '+traitements[2]?.compte.username}"></span>
+                                                                  <span th:text="${'Date: '+traitements[2]?.date}"></span>
+                                                                  <hr>
+                                                                  <tr th:if="${#lists.size(traitements[2]?.statusList)}>0" th:each="status : ${traitements[2].statusList}">
+                                                                      <span th:text="${status.date}"></span><br>
+                                                                      <span th:text="${status.status}"></span><br>
+                                                                      <span th:if="${status.validate}" class="text-success">Terminer</span><br>
+                                                                      <span th:if="${!status.validate}" class="text-warning">Inachever</span><br>
+                                                                      <a th:href="${status.fileUrl}" th:if="${status.fileUrl}">Telecharger le document en attacher&nbsp; <i class="fa fa-file"></i></a><br>
+                                                                      <span th:unless="${status.fileUrl}">Aucun fichier attacher</span><br>
+                                                                  </tr>
+                                                                  <tr th:if="${#lists.size(traitements[2]?.statusList)} >= 1 and ${#lists.size(traitements[2]?.statusList)} < 2 " >
+                                                                      <a  class="btn btn-outline-success rounded"  data-toggle="modal" data-target="#addStatusModal2" ><i class="fa fa-chevron-left"></i>&nbsp;&nbsp;Soumettre une reponse </a>
+                                                                      <div class="modal fade" id="addStatusModal2" tabindex="-1" role="dialog" aria-hidden="true">
+                                                                          <div class="modal-dialog" role="document">
+                                                                              <div class="modal-content">
+                                                                                  <div class="modal-header no-bd">
+                                                                                      <h5 class="modal-title">
+                                                                            <span class="fw-mediumbold">
+                                                                                    Formulaire d'une
+                                                                            </span>
+                                                                                          <span class="fw-light">
+															                        Action
+                                                                            </span>
+                                                                                      </h5>
+                                                                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                          <span aria-hidden="true">&times;</span>
+                                                                                      </button>
+                                                                                  </div>
+                                                                                  <form th:action="@{/archive/status/save/}+${traitements[2]?.id}" method="post" th:object="${status}" enctype="multipart/form-data">
+                                                                                      <div class="modal-body">
+                                                                                          <p class="small">Bien vouloir renseigner les champs ci-dessous pour ajouter une nouvelle action</p>
+                                                                                          <div class="row">
+                                                                                              <div class="col-sm-12">
+                                                                                                  <div class="form-group form-group-default">
+                                                                                                      <label>Observations :</label>
+                                                                                                      <textarea th:field="*{observation}" rows="3" class="form-control" placeholder="Observation"></textarea>
+                                                                                                  </div>
+                                                                                                  <div class="form-group form-group-default">
+                                                                                                      <label>Document :</label>
+                                                                                                      <input  type="file" name="file" class="form-control-file" >
+                                                                                                  </div>
+
+                                                                                              </div>
+
+                                                                                          </div>
+                                                                                      </div>
+                                                                                      <div class="modal-footer no-bd">
+                                                                                          <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                                                                                          <button type="submit"  class="btn btn-primary">Enregistrer</button>
+                                                                                      </div>
+                                                                                  </form>
+                                                                              </div>
+                                                                          </div>
+                                                                      </div>
+                                                                  </tr>
+                                                              </li>
+                                                          </ul>
+                                                          <ul th:if="${#lists.size(traitements)} <= 2">
+                                                              <li>
+                                                                  <span th:text="${'Aucun element recu'}"></span>
+                                                              </li>
+                                                          </ul>
+
+                                                          <br>
+
+
+                                                      </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
 
                             </div>
@@ -353,6 +724,7 @@
 
 <!-- Sweet Alert -->
 <script th:src="@{/js/plugin/sweetalert/sweetalert.min.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bs-stepper/dist/js/bs-stepper.min.js"></script>
 
 <!-- Atlantis JS -->
 <script th:src="@{/js/atlantis.min.js}"></script>
@@ -474,6 +846,8 @@
 
         });
     });
+</script>
+
 </script>
 <!--script>
     $(document).ready(function () {
